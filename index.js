@@ -20,6 +20,18 @@ const client = new MongoClient(uri, {
   },
 });
 
+// tab ---- 
+app.get("/allToysByCategory/:text", async (req, res) => {
+  console.log(req.params.text);
+  if (req.params.text=='TRACTOR' || req.params.text=='racing' || req.params.text=='Dancing') {
+      const result = await toyCollection.find({sub_category: req.params.text}).toArray();
+      console.log(result);
+       return res.send(result)    
+  }
+  const result = await toyCollection.find({}).toArray();
+  res.send(result)
+});
+
 async function run() {
   try {
     // Connect the client to the server	(optional starting in v4.7)
