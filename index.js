@@ -75,6 +75,20 @@ const uri =process.env.URI;
       //         res.status(500).send('Internal Server Error'); 
       //       } 
       //     }); 
+
+    app.get("/getToysByText/:text", async (req, res) => {
+      const text = req.params.text;
+      const result = await jobsCollection
+        .find({
+          $or: [
+            { title: { $regex: searchText, $options: "i" }  },
+            { category:  { $regex: searchText, $options: "i" }  },
+          ],
+        })
+        .toArray();
+      res.send(result);
+    });
+
    
       // tab ---- 
    
