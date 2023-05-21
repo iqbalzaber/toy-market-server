@@ -27,7 +27,7 @@ const client = new MongoClient(uri, {
       // Send a ping to confirm a successful connection
    
     const toyCollection = client.db("toycarDB").collection("toycollection");
-      const orderCollection = client.db("torCarDB").collection("orderCollection"); 
+      const orderCollection = client.db("toycarDB").collection("orderCollection"); 
    
       // step-1
     app.get("/toys", async (req, res) => {
@@ -189,7 +189,7 @@ const client = new MongoClient(uri, {
 run().catch(console.dir);
 
 app.get("/", (req, res) => {
-  res.send("car toy shop");
+  res.send("babe toy shop");
 });
 
 app.listen(port, () => {
